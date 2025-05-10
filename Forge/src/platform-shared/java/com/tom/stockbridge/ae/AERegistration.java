@@ -20,6 +20,8 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 
 import com.tom.stockbridge.Registration;
 import com.tom.stockbridge.StockBridge;
+import com.tom.stockbridge.ae.menu.AEStockBridgeMenu;
+import com.tom.stockbridge.ae.menu.RemoteItemStrategy;
 
 import appeng.api.behaviors.ContainerItemStrategies;
 import appeng.api.crafting.IPatternDetails;

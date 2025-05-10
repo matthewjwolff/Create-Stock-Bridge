@@ -1,9 +1,10 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/create-stock-bridge",
 	"promos": {
-		"1.20.1-latest": "0.1.0"
+		"1.20.1-latest": "0.1.1"
 	},
 	"1.20.1": {
+		"0.1.1": "Fixed bridge losing in transit items on unloading",
 		"0.1.0": "First Release"
 	}
 }

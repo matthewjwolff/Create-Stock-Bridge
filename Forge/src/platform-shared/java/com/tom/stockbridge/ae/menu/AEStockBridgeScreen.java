@@ -1,4 +1,4 @@
-package com.tom.stockbridge.ae;
+package com.tom.stockbridge.ae.menu;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -8,6 +8,8 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
+
+import com.tom.stockbridge.ae.AERegistration;
 
 import appeng.client.gui.AEBaseScreen;
 import appeng.client.gui.style.ScreenStyle;

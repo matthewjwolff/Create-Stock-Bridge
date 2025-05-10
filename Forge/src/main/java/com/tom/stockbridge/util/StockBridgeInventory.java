@@ -2,6 +2,8 @@ package com.tom.stockbridge.util;
 
 import org.jetbrains.annotations.NotNull;
 
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 
@@ -15,7 +17,6 @@ import com.tom.stockbridge.block.entity.AbstractStockBridgeBlockEntity.BridgeInv
 public class StockBridgeInventory implements IItemHandler, BridgeInventory {
 	private SimpleContainer insert = new SimpleContainer(9);
 	private SimpleContainer extract = new SimpleContainer(9);
-	//TODO save
 	public InvWrapper insertW = new InvWrapper(insert);
 	public InvWrapper extractW = new InvWrapper(extract);
 
@@ -80,5 +81,17 @@ public class StockBridgeInventory implements IItemHandler, BridgeInventory {
 	@Override
 	public AbstractStockBridgeBlockEntity getBlockEntity() {
 		return be;
+	}
+
+	public void read(CompoundTag compound) {
+		insert.fromTag(compound.getList("in", Tag.TAG_COMPOUND));
+		extract.fromTag(compound.getList("out", Tag.TAG_COMPOUND));
+	}
+
+	public CompoundTag write() {
+		CompoundTag tag = new CompoundTag();
+		tag.put("in", insert.createTag());
+		tag.put("out", extract.createTag());
+		return tag;
 	}
 }

@@ -7,6 +7,8 @@ import net.createmod.catnip.data.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -19,6 +21,7 @@ import com.simibubi.create.content.logistics.packager.InventorySummary;
 
 import com.google.common.collect.ImmutableSet;
 
+import com.tom.stockbridge.ae.menu.AEStockBridgeMenu;
 import com.tom.stockbridge.block.entity.AbstractStockBridgeBlockEntity;
 
 import appeng.api.config.Actionable;
@@ -85,6 +88,14 @@ IGridConnectedBlockEntity, IPriorityHost, IStorageProvider, ICraftingProvider, I
 			this.getMainNode().saveToNBT(tag);
 			tag.putInt("priority", this.getPriority());
 			this.craftingTracker.writeToNBT(tag);
+
+			ListTag list = new ListTag();
+			for (final Object2LongMap.Entry<AEKey> input : itemRequests) {
+				CompoundTag t = input.getKey().toTagGeneric();
+				t.putLong("cnt", input.getLongValue());
+				list.add(t);
+			}
+			tag.put("requests", list);
 		}
 	}
 
@@ -95,6 +106,15 @@ IGridConnectedBlockEntity, IPriorityHost, IStorageProvider, ICraftingProvider, I
 			this.getMainNode().loadFromNBT(tag);
 			this.priority = tag.getInt("priority");
 			this.craftingTracker.readFromNBT(tag);
+
+			itemRequests.clear();
+			ListTag list = tag.getList("requests", Tag.TAG_COMPOUND);
+			for(int i = 0; i < list.size(); ++i) {
+				var t = list.getCompound(i);
+				var key = AEKey.fromTagGeneric(t);
+				long value = t.getLong("cnt");
+				itemRequests.add(key, value);
+			}
 		}
 	}
 

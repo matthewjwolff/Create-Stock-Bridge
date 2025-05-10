@@ -41,6 +41,8 @@ import com.simibubi.create.infrastructure.ponder.scenes.highLogistics.PonderHilo
 import com.tterrag.registrate.util.entry.BlockEntry;
 
 import com.tom.stockbridge.StockBridge;
+import com.tom.stockbridge.ae.menu.AEStockBridgeMenu;
+import com.tom.stockbridge.ae.menu.AEStockBridgeScreen;
 
 import appeng.api.client.AEKeyRenderHandler;
 import appeng.api.client.AEKeyRendering;

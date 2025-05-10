@@ -1,4 +1,4 @@
-package com.tom.stockbridge.ae;
+package com.tom.stockbridge.ae.menu;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -6,6 +6,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+
+import com.tom.stockbridge.ae.AERemoteItemKey;
 
 import appeng.api.behaviors.ContainerItemStrategy;
 import appeng.api.config.Actionable;

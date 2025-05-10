@@ -1,8 +1,9 @@
-package com.tom.stockbridge.ae;
+package com.tom.stockbridge.ae.menu;
 
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.MenuType;
 
+import com.tom.stockbridge.ae.AEStockBridgeBlockEntity;
 import com.tom.stockbridge.ae.util.AEMenuTypeBuilder;
 
 import appeng.menu.AEBaseMenu;

@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import net.createmod.catnip.data.Pair;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -132,5 +133,21 @@ public class AEStockBridgeBlockEntity extends AbstractAEStockBridgeBlockEntity {
 		}
 		sendPulseNextSync();
 		notifyUpdate();
+	}
+
+	@Override
+	protected void write(CompoundTag tag, boolean clientPacket) {
+		super.write(tag, clientPacket);
+		if (!clientPacket) {
+			tag.put("inv", inv.write());
+		}
+	}
+
+	@Override
+	protected void read(CompoundTag tag, boolean clientPacket) {
+		super.read(tag, clientPacket);
+		if (!clientPacket) {
+			inv.read(tag.getCompound("inv"));
+		}
 	}
 }
