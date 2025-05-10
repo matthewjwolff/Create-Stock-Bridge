@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "createstockbridge:ae_bridge"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "stuff": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "create:stock_link",
+              "ae2:interface"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "stuff"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "createstockbridge:ae_bridge"
+    ]
+  }
+}

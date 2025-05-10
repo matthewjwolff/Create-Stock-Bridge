@@ -1,0 +1,22 @@
+{
+  "type": "neoforge",
+  "name": "createstockbridge-1.21.1",
+  "mcVer": "1.21",
+  "verId": "1.21.1",
+  "display": "[NeoForge] Create Stock Bridge 1.21.1",
+  "onGit": true,
+  "subver": [
+	"1.21.1"
+  ],
+  "j17": true,
+  "depProjects": [
+    {
+      "slug": "create",
+      "type": "requiredDependency"
+    },
+    {
+      "slug": "applied-energistics-2",
+      "type": "requiredDependency"
+    }
+  ]
+}

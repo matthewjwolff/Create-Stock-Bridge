@@ -1,9 +1,0 @@
-// 1.20.1	2025-05-02T19:27:37.5137018	Registrate Provider for createstockbridge [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
-895ae90145f8cee803f02e95ed8eee11850c3b5b assets/createstockbridge/blockstates/ae_bridge.json
-99b8a3d3d630fb4e4ba5d5be458d20e4816105d4 assets/createstockbridge/lang/en_ud.json
-5b10ca5047cad08885793c989cac22c589b42ac3 assets/createstockbridge/lang/en_us.json
-5601efa07bd19500facdced1a28846a007f34fde assets/createstockbridge/models/item/ae_bridge.json
-65c1d03dfa1df874200d3ed6e7d8b984496a8187 assets/createstockbridge/models/item/request_pattern.json
-f8b87444782ec834b0bdd8adf14dd70e154d5074 data/createstockbridge/loot_tables/blocks/ae_bridge.json
-cc3172be3ca9cb97d8321363c1f8f02c1592a306 data/minecraft/tags/blocks/mineable/pickaxe.json
-cc3172be3ca9cb97d8321363c1f8f02c1592a306 data/minecraft/tags/blocks/needs_iron_tool.json
