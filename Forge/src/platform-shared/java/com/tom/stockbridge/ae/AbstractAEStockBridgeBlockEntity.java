@@ -56,7 +56,7 @@ public abstract class AbstractAEStockBridgeBlockEntity extends AbstractStockBrid
 IGridConnectedBlockEntity, IPriorityHost, IStorageProvider, ICraftingProvider, ICraftingRequester {
 	protected final IManagedGridNode mainNode;
 	protected final MEStorage inventory;
-	private int priority;
+	private int priority = 100;
 	private boolean wasOnline;
 	private boolean setChangedQueued;
 	protected MultiCraftingTracker craftingTracker;
@@ -183,6 +183,11 @@ IGridConnectedBlockEntity, IPriorityHost, IStorageProvider, ICraftingProvider, I
 	@Override
 	public int getPriority() {
 		return this.priority;
+	}
+
+	@Override
+	public int getPatternPriority() {
+		return getPriority();
 	}
 
 	@Override

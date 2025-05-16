@@ -9,6 +9,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.content.logistics.packagerLink.LogisticallyLinkedBlockItem;
 import com.simibubi.create.content.redstone.displayLink.LinkBulbRenderer;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -27,6 +28,7 @@ import appeng.api.behaviors.ContainerItemStrategies;
 import appeng.api.crafting.IPatternDetails;
 import appeng.api.crafting.IPatternDetailsDecoder;
 import appeng.api.crafting.PatternDetailsHelper;
+import appeng.api.ids.AECreativeTabIds;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKeyType;
 import appeng.core.AppEng;
@@ -60,6 +62,9 @@ public class AERegistration {
 
 	static {
 		REGISTRATE.generic("ae_bridge", Registries.MENU, () -> AEStockBridgeMenu.TYPE).register();
+
+		REGISTRATE.modifyCreativeModeTab(AECreativeTabIds.MAIN, b -> b.accept(BRIDGE_BLOCK.asItem()));
+		REGISTRATE.modifyCreativeModeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey(), b -> b.accept(BRIDGE_BLOCK.asItem()));
 	}
 
 	public static void register() {
@@ -84,6 +89,7 @@ public class AERegistration {
 
 			@Override
 			public @Nullable IPatternDetails decodePattern(AEItemKey is, Level level) {
+				if (is == null)return null;
 				return decodePattern(is.toStack(), level, false);
 			}
 		});
