@@ -9,13 +9,12 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 
-import com.tom.stockbridge.ae.AERegistration;
+import com.tom.stockbridge.ae.AEPlatformRegistration;
 import com.tom.stockbridge.client.ClientRegistration;
 import com.tom.stockbridge.network.NetworkHandler;
 
@@ -54,6 +53,6 @@ public class StockBridge {
 	}
 
 	private void registerCapabilities(RegisterCapabilitiesEvent event) {
-		event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, AERegistration.BRIDGE_TILE.get(), (be, side) -> be.getInv());
+		AEPlatformRegistration.registerCapabilities(event);
 	}
 }

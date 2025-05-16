@@ -7,9 +7,11 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.content.logistics.packagerLink.LogisticallyLinkedBlockItem;
 import com.simibubi.create.content.redstone.displayLink.LinkBulbRenderer;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -28,6 +30,7 @@ import appeng.api.behaviors.ContainerItemStrategies;
 import appeng.api.crafting.IPatternDetails;
 import appeng.api.crafting.IPatternDetailsDecoder;
 import appeng.api.crafting.PatternDetailsHelper;
+import appeng.api.ids.AECreativeTabIds;
 import appeng.api.stacks.AEItemKey;
 import appeng.api.stacks.AEKeyType;
 import appeng.core.AppEng;
@@ -65,6 +68,9 @@ public class AERegistration {
 
 	static {
 		REGISTRATE.generic("ae_bridge", Registries.MENU, () -> AEStockBridgeMenu.TYPE).register();
+
+		REGISTRATE.modifyCreativeModeTab(AECreativeTabIds.MAIN, b -> b.accept(BRIDGE_BLOCK.asItem(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY));
+		REGISTRATE.modifyCreativeModeTab(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey(), b -> b.accept(BRIDGE_BLOCK.asItem(), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY));
 	}
 
 	public static void register() {
@@ -81,6 +87,7 @@ public class AERegistration {
 
 			@Override
 			public @Nullable IPatternDetails decodePattern(AEItemKey stack, Level p1) {
+				if (stack == null)return null;
 				var is = stack.get(VIRTUAL_PATTERN_OUT.get());
 				if (is != null) {
 					return VirtualPattern.of(is);

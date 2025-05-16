@@ -1,13 +1,15 @@
 {
 	"homepage": "https://www.curseforge.com/minecraft/mc-mods/create-stock-bridge",
 	"promos": {
-		"1.21.1": "0.1.1",
-		"1.20.1-latest": "0.1.1"
+		"1.21.1": "0.1.2",
+		"1.20.1-latest": "0.1.2"
 	},
 	"1.21.1": {
+		"0.1.2": "Fixed cables not always connecting\nFixed bridge item not showing in any creative tabs\nFixed priority not applying to 'crafting' requests\nFixed crash with Molecular Assembler",
 		"0.1.1": "1.21 port"
 	},
 	"1.20.1": {
+		"0.1.2": "Fixed bridge item not showing in any creative tabs\nFixed priority not applying to 'crafting' requests",
 		"0.1.1": "Fixed bridge losing in transit items on unloading",
 		"0.1.0": "First Release"
 	}
