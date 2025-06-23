@@ -12,7 +12,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 import com.tterrag.registrate.providers.ProviderType;
-import com.tterrag.registrate.providers.RegistrateDataProvider;
 
 import com.tom.stockbridge.StockBridge;
 import com.tom.stockbridge.client.ClientRegistration;
@@ -34,7 +33,5 @@ public class DataGenerators {
 				PonderIndex.getLangAccess().provideLang(StockBridge.MODID, langConsumer);
 			});
 		}
-
-		event.getGenerator().addProvider(true, StockBridge.registrate().setDataProvider(new RegistrateDataProvider(StockBridge.registrate(), StockBridge.MODID, event)));
 	}
 }
