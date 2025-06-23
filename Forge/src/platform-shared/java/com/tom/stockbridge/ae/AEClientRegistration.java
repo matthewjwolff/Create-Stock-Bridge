@@ -6,6 +6,7 @@ import org.joml.Matrix4f;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.createmod.catnip.math.Pointing;
 import net.createmod.ponder.api.PonderPalette;
 import net.createmod.ponder.api.element.ElementLink;
 import net.createmod.ponder.api.element.WorldSectionElement;
@@ -141,8 +142,8 @@ public class AEClientRegistration {
 		scene.setSceneOffsetY(-1);
 		scene.showBasePlate();
 
-		ElementLink<WorldSectionElement> terminal = scene.world().showIndependentSection(util.select().position(2, 1, 2), Direction.DOWN);
-		scene.world().moveSection(terminal, util.vector().of(0, 0, 0), 0);
+		ElementLink<WorldSectionElement> bridgeBlock = scene.world().showIndependentSection(util.select().position(2, 1, 2), Direction.DOWN);
+		scene.world().moveSection(bridgeBlock, util.vector().of(0, 0, 0), 0);
 		scene.idle(10);
 
 		scene.overlay().showText(70)
@@ -150,7 +151,37 @@ public class AEClientRegistration {
 		.placeNearTarget()
 		.attachKeyFrame()
 		.text("AE Stock Bridge links the Create Stock system with AE");
-		scene.idle(60);
+		scene.idle(70);
+
+		scene.world().hideIndependentSection(bridgeBlock, Direction.UP);
+		scene.idle(10);
+
+		ElementLink<WorldSectionElement> bindT = scene.world().showIndependentSection(util.select().position(ticker), Direction.DOWN);
+		scene.world().moveSection(bindT, util.vector().of(-2, 0, 2), 0);
+		scene.idle(10);
+
+		scene.overlay().showText(60)
+		.pointAt(util.vector().of(3, 2, 3))
+		.placeNearTarget()
+		.attachKeyFrame()
+		.text("Right-Click to bind to the stock network before placing");
+		scene.idle(10);
+
+		scene.overlay().showControls(util.vector().of(3, 2, 3), Pointing.UP, 70)
+		.rightClick()
+		.withItem(AERegistration.BRIDGE_BLOCK.asStack());
+		scene.idle(5);
+
+		scene.overlay().showOutline(PonderPalette.BLUE, util.grid().at(3, 1, 3), util.select().position(3, 1, 3), 70);
+
+		scene.idle(75);
+
+		scene.world().hideIndependentSection(bindT, Direction.UP);
+		scene.idle(10);
+
+		bridgeBlock = scene.world().showIndependentSection(util.select().position(2, 1, 2), Direction.DOWN);
+		scene.world().moveSection(bridgeBlock, util.vector().of(0, 0, 0), 0);
+		scene.idle(10);
 
 		ElementLink<WorldSectionElement> ae = scene.world().showIndependentSection(util.select().fromTo(1, 1, 2, 1, 2, 4), Direction.DOWN);
 		scene.world().moveSection(ae, util.vector().of(0, 0, 0), 0);
