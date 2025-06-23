@@ -216,7 +216,7 @@ IGridConnectedBlockEntity, IPriorityHost, IStorageProvider, ICraftingProvider, I
 	@Override
 	public void tick() {
 		super.tick();
-		if (!level.isClientSide && level.getGameTime() % 20 == worldPosition.hashCode() % 20) {
+		if (!level.isClientSide && level.getGameTime() % 20 == Math.abs(worldPosition.hashCode()) % 20) {
 			items = behaviour.getItems();
 			remountStorage();//TODO improve speed
 
@@ -270,6 +270,7 @@ IGridConnectedBlockEntity, IPriorityHost, IStorageProvider, ICraftingProvider, I
 		public void getAvailableStacks(KeyCounter out) {
 			if (items != null) {
 				for (var item : items.getStacks()) {
+					if (item.stack.isEmpty())continue;
 					out.add(AERemoteItemKey.of(item.stack), item.count);
 				}
 			}
@@ -320,6 +321,7 @@ IGridConnectedBlockEntity, IPriorityHost, IStorageProvider, ICraftingProvider, I
 		if (items != null) {
 			List<IPatternDetails> l = new ArrayList<>();
 			for (var item : items.getStacks()) {
+				if (item.stack.isEmpty())continue;
 				l.add(VirtualPattern.of(AEItemKey.of(item.stack)));
 			}
 			return l;
