@@ -1,6 +1,8 @@
 package com.tom.stockbridge.ae;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -170,9 +172,27 @@ public class AERemoteItemKey extends AEKey {
 				.getOrThrow();
 	}
 
+	private static class AERemoteKey {
+		static Map<Item, AERemoteKey> cache = new HashMap<>();
+		@SuppressWarnings("unused")
+		private final Item item;
+		private AERemoteKey(Item item) {
+			this.item = item;
+		}
+		public static AERemoteKey of(Item i) {
+			return cache.computeIfAbsent(i, AERemoteKey::new);
+		}
+	}
+	
+	/**
+	 * AE networks must never have more than one instance of AEKey return the same getPrimaryKey.
+	 * See https://github.com/AppliedEnergistics/Applied-Energistics-2/pull/8586
+	 * Since players never naturally "extract" the remote item (they "craft"/request from create instead)
+	 * its fine to just wrap the item in a different class.
+	 */
 	@Override
 	public Object getPrimaryKey() {
-		return stack.getItem();
+		return AERemoteKey.of(stack.getItem());
 	}
 
 	/**
